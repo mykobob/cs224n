@@ -33,7 +33,9 @@ def softmax(x):
         ### YOUR CODE HERE
         c = np.transpose(np.expand_dims(-np.max(x, axis=1), axis=0))
         x = np.add(x, c)
-        x = np.exp(x) / np.sum(np.exp(x), axis=1)
+        numerator = np.exp(x) 
+        denominator = np.sum(np.exp(x), axis=1, keepdims=True)
+        x = numerator / denominator
         ### END YOUR CODE
     else:
         # Vector
